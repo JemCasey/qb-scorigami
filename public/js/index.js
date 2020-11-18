@@ -20,8 +20,11 @@ $(function () {
     $('.occurred').on('mouseover', function() {
         var colRowMatch = $(this).attr('class').match(/col-(\d*) row-(\-?\d*)/);
 
-        $(`td.col-${colRowMatch[1]}`).addClass('highlight');
-        $(`td.row-${colRowMatch[2]}`).addClass('highlight');
+        if (!$('#heatMap').is(":checked")) {
+            $(`td.col-${colRowMatch[1]}`).addClass('highlight');
+            $(`td.row-${colRowMatch[2]}`).addClass('highlight');
+        }
+
         $(`.col-header-${colRowMatch[1]}`).text(colRowMatch[1]);
         $(`.row-header-${colRowMatch[2]}`).text(colRowMatch[2]); 
     });
@@ -35,6 +38,23 @@ $(function () {
         $('#popup').hide();
     });
 
-    $('table').show();
+    $('#heatMap').on('change', function(){
+        var maxInstances = $(this).data('maxinstances');
+        var heatMapColorforValue = (value) => {
+            var h = (1.0 - value) * 240
+            return "hsl(" + h + ", 100%, 50%)";
+        };
+
+        if ($(this).is(':checked')) {
+            $('.occurred').each(function() {
+                let instanceData = $(this).data('instances');
+                $(this).css('background-color', heatMapColorforValue(instanceData.instances / maxInstances));
+            });
+        } else {
+            $('.occurred').removeAttr("style");
+        }
+    });
+
+    $('.post-load').show();
     $('#loading').hide();
 });

@@ -12,9 +12,14 @@ html
         p
             | Data taken from collegiate and open quizbowl tournament stats posted on 
             a(href='https://hsquizbowl.org/db/') hsquizbowl.org
-            |  through 09/08/2020.
+            |  through 11/08/2020.
         div#loading Loading...
-        table(cellspacing='0',cellpadding='0',style="display:none;")
+        div.post-load(style="display:none;")
+            label.switch(style="margin-right:10px")
+                input#heatMap(type='checkbox',data-maxinstances=maxInstances)
+                span.slider.round
+            | Heat map      
+        table.post-load(cellspacing='0',cellpadding='0',style="display:none;")
             tbody
                 tr
                     td.axis-label.x-axis(colspan=winColumnNumbers.length + 1,style=`width:${(winColumnNumbers.length + 1) * 5}px`) Winning Team Score
@@ -52,4 +57,6 @@ html
                 span#firstInstance
             div#latestInstanceDiv.popup-body
                 span.text-bold Latest Instance: 
-                span#latestInstance               
+                span#latestInstance
+     footer
+        p Created by Jordan Brownstein
