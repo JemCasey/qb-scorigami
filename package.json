@@ -1,0 +1,18 @@
+{
+  "name": "qb-scorigami",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "app": "nodemon app.js"
+  },
+  "author": "Jordan Brownstein",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodejs": "0.0.0",
+    "nodemon": "^2.0.6",
+    "pug": "^3.0.0"
+  }
+}

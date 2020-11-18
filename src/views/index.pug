@@ -1,0 +1,55 @@
+block variables
+doctype html
+html
+     head
+        meta(charset="utf-8")
+        title Quizbowl Scorigami
+        link(rel="stylesheet" href="css/index.css")
+        script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/cash/8.1.0/cash.min.js')
+        script(type='text/javascript', src='js/index.js')
+     body
+        h1 Quizbowl Scorigami
+        p
+            | Data taken from collegiate and open quizbowl tournament stats posted on 
+            a(href='https://hsquizbowl.org/db/') hsquizbowl.org
+            |  through 09/08/2020.
+        div#loading Loading...
+        table(cellspacing='0',cellpadding='0',style="display:none;")
+            tbody
+                tr
+                    td.axis-label.x-axis(colspan=winColumnNumbers.length + 1,style=`width:${(winColumnNumbers.length + 1) * 5}px`) Winning Team Score
+                    td.axis-label.y-axis(rowspan=lossRowNumbers.length) 
+                        div.vertical-text Losing Team Score
+                tr
+                    each column in winColumnNumbers
+                        if column % 50 === 0
+                            td.scorigami-cell(class=`col-header-${column}`) #{column}
+                        else
+                            td.scorigami-cell.default-empty(class=`col-header-${column}`)    
+                each row in lossRowNumbers              
+                    tr
+                        each column in winColumnNumbers
+                            if row > column
+                                td.scorigami-cell.invalid
+                            else if scorigamiMatrix[row] && scorigamiMatrix[row][column]
+                                td.scorigami-cell.occurred(class=[`col-${column}`,`row-${row}`],data-winScore=column,data-loseScore=row,data-instances=JSON.stringify(scorigamiMatrix[row][column]))
+                            else
+                                td.scorigami-cell(class=[`col-${column}`,`row-${row}`])
+                        if row % 50 === 0
+                            td
+                                div.losing-score-axis(class=`row-header-${row}`) #{row}
+                        else
+                            td
+                                div.losing-score-axis.default-empty(class=`row-header-${row}`)
+        div#popup.popup(style='display:none;')
+            div.text-bold Score: 
+                span#score
+                span.close x
+            div.popup-body Has occurred 
+                span#instances
+            div.popup-body
+                span.text-bold First Instance: 
+                span#firstInstance
+            div#latestInstanceDiv.popup-body
+                span.text-bold Latest Instance: 
+                span#latestInstance               

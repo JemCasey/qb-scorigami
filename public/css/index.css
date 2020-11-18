@@ -1,0 +1,104 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+td.scorigami-cell {
+    width:5px;
+    height:5px;
+    font-size:.5em;
+}
+
+th.scorigami-cell {
+    white-space: nowrap;
+    overflow: visible;
+}
+
+td.invalid {
+    background-color: black;
+}
+
+td.occurred {
+    background-color: green;
+}
+
+td.occurred:hover {
+    background-color: lightgreen;
+    cursor: pointer;
+}
+
+table {
+    table-layout: fixed;
+    width:0px;
+    height:0px;
+    display: inline-table;
+    border: none; 
+    overflow:visible; 
+}
+
+div.losing-score-axis {
+    width:5px;
+    height:5px;
+    font-size:.5em;
+    overflow: visible;
+}
+
+td.highlight {
+    background-color: lightgray;
+}
+
+td.occurred.highlight {
+    background-color: #a4f5bc;
+}
+
+.popup {
+    background-color: white;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 150%;
+    left: 50%;
+    margin-left: -60px;
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  top: 10%;
+  right: 0%;
+  padding: 20px 5px;
+  color: black;
+  transform: translate(0%, -50%);
+}
+
+.axis-label {
+    text-align:center;
+    font-weight:bold;
+}
+
+.y-axis {
+    padding-left:20px;
+}
+
+.x-axis {
+    padding-bottom:20px;
+}
+
+.vertical-text {
+    writing-mode: tb-rl;
+    text-orientation: mixed;
+    white-space: nowrap;
+}
+
+.close:hover { color: gray;}
+
+.text-bold {
+    font-weight: bold;
+}
+
+.popup-body {
+    font-size:.8em;
+}
