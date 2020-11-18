@@ -11,10 +11,12 @@ $(function () {
         $('#instances').text(instanceData.instances === 1 ? " once": `${instanceData.instances} times`);  
         $('#firstInstance').html(`${fi.scoreline} at <a href=${fi.tournament.url}>${fi.tournament.name}</a> on ${fi.tournament.date}`);     
         
-        if (instanceData.instances === 1)
+        if (instanceData.instances === 1) {
             $('#latestInstanceDiv').hide();
-        else
-            $('#latestInstance').html(`${li.scoreline} at <a href=${li.tournament.url}>${li.tournament.name}</a> on ${li.tournament.date}`);     
+        } else {
+            $('#latestInstanceDiv').show();
+            $('#latestInstance').html(`${li.scoreline} at <a href=${li.tournament.url}>${li.tournament.name}</a> on ${li.tournament.date}`); 
+        }    
     });
 
     $('.occurred').on('mouseover', function() {
